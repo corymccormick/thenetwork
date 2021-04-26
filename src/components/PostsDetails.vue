@@ -1,11 +1,9 @@
 <template>
-  <div class="container-fluid d-flex justify-content-center">
-    <div class="postsDetails col-8">
-      <div class="card shadow m-2">
+  <div class="row justify-content-center">
+    <div class="postsDetails col-md">
+      <div class=" card shadow m-2">
         <router-link :to="{name: 'Profile', params:{id: post.creator.id}}">
-          <div class=" d-flex justify-content-left">
-            <img class="rounded-circle m-2" :src="post.creator.picture" alt="" />
-          </div>
+          <img class="d-flex justify-content-left rounded-circle m-2" :src="post.creator.picture" alt="" />
         </router-link>
         <p class="text-left ml-2">
           {{ post.creator.name }}

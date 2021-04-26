@@ -6,7 +6,7 @@ class SponsorsService {
   async getAds() {
     try {
       const res = await api.get('api/ads')
-      AppState.ads = res.data
+      AppState.sponser = res.data
     } catch (error) {
       logger.error(error)
     }
