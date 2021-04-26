@@ -2,8 +2,8 @@
   <div class="profile container fluid">
     <div class="row">
       <div class="col-md-8">
+        <!--NOTE insert cover image <img class="bg" :src="state.profile.coverImg" alt="" /> -->
         <div class=" row card shadow">
-          <!--NOTE insert cover image <img class="bg" :src="state.profile.coverImg" alt="" /> -->
           <img class="rounded-circle m-2" :src="state.profile.picture" alt="" />
           <p class="text-left ml-2">
             {{ state.profile.class }} <br />
@@ -39,15 +39,20 @@
               </button>
             </form>
           </div>
-          <PostsDetails
-            v-for="post in state.posts.posts"
-            :key="post.id"
-            :post="post"
-          />
+          <div>
+            <PostsDetails
+              v-for="post in state.posts.posts"
+              :key="post.id"
+              :post="post"
+            />
+            <button v-if="state.account.id === state.profile.id">
+              Delete
+            </button>
+          </div>
         </div>
-        <div class="col-md-2">
-          <SponserDetails v-for="sponser in state.sponser" :key="sponser.title" :sponser="sponser" />
-        </div>
+      </div>
+      <div class="col-md-2">
+        <SponserDetails v-for="sponser in state.sponser" :key="sponser.title" :sponser="sponser" />
       </div>
     </div>
   </div>

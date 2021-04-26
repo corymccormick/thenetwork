@@ -26,6 +26,7 @@ class PostsService {
     const res = await api.post('api/posts', data)
     router.push({ name: 'Profile', params: { id: res.data.id } })
   }
+
   // async getNextPage() {
   //   try {
   //     const res = await api.get('api/posts?page=)
@@ -34,5 +35,13 @@ class PostsService {
   //     logger.error(error)
   //   }
   // }
+  async deletePost(id) {
+    try {
+      await api.delete('api/posts/' + id)
+      AppState.posts = AppState.posts.filter(post => post.id !== id)
+    } catch (error) {
+      logger.error(error)
+    }
+  }
 }
 export const postsService = new PostsService()
