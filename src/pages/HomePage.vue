@@ -2,7 +2,8 @@
   <div class="container-fluid">
     <div class="home row flex-grow-1 d-flex  justify-content-center">
       <div class="col-md-6">
-        <PostsDetails v-for="post in state.posts.posts" :key="post.id" :post="post" />
+        <PostsDetails @like-post="likePost" v-for="post in state.posts.posts" :key="post.id" :post="post" />
+        <!-- v-if state.posts.newer add newer button -->
       </div>
       <div class="col-md-2">
         <SponserDetails
@@ -21,6 +22,7 @@ import Notification from '../utils/Notification'
 import { AppState } from '../AppState'
 import { postsService } from '../services/PostsService'
 import { sponsersService } from '../services/SponsersService'
+
 export default {
   name: 'Home',
   setup() {
@@ -38,7 +40,16 @@ export default {
       }
     })
     return {
-      state
+      state,
+      async likePost(id) {
+        try {
+          await postsService.likePost(id)
+          Notification.toast('Liked', 'success')
+          await postsService.getPosts()
+        } catch (error) {
+          Notification.toast('Error: ' + error, 'error')
+        }
+      }
     }
   }
 }

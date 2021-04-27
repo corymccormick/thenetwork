@@ -45,9 +45,6 @@
               :key="post.id"
               :post="post"
             />
-            <button v-if="state.account.id === state.profile.id">
-              Delete
-            </button>
           </div>
         </div>
       </div>
@@ -102,6 +99,7 @@ export default {
           Notification.toast('Error: ' + error, 'error')
         }
       }
+
     }
   }
 }

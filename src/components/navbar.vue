@@ -6,6 +6,7 @@
           The Network
         </h1>
         <!-- navbar image -->
+        <!-- FIXME add a serch input to fire a query to the posts service -->
       </div>
     </router-link>
     <button
