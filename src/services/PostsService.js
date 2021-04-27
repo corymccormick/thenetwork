@@ -43,12 +43,14 @@ class PostsService {
   //     logger.error(error)
   //   }
   // }
+
   async deletePost(id) {
     await api.delete('api/posts/' + id)
     AppState.posts = AppState.posts.posts.filter(post => post.id !== id)
     router.push({ name: 'Home' })
   }
 
+  // NOTE this delete function works but only on manual page refresh or from the profile page routing you back to the homepage
   async likePost(id) {
     await api.post(`api/posts/${id}/like`)
   }

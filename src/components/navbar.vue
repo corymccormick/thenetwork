@@ -7,6 +7,7 @@
         </h1>
         <!-- navbar image -->
         <!-- FIXME add a serch input to fire a query to the posts service -->
+        <!-- insert link to profile page  -->
       </div>
     </router-link>
     <button
