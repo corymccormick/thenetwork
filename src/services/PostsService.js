@@ -1,7 +1,7 @@
 import { AppState } from '../AppState'
 import { logger } from '../utils/Logger'
 import { api } from './AxiosService'
-// import router from '../router'
+import router from '../router'
 
 class PostsService {
   async getPosts(page = 1) {
@@ -46,6 +46,7 @@ class PostsService {
   async deletePost(id) {
     await api.delete('api/posts/' + id)
     AppState.posts = AppState.posts.posts.filter(post => post.id !== id)
+    router.push({ name: 'Home' })
   }
 
   async likePost(id) {

@@ -32,7 +32,6 @@ export default {
     })
     onMounted(async() => {
       try {
-        // NOTE when making click handler make method here, pass value thru click handler
         await postsService.getPosts()
         await sponsersService.getAds()
       } catch (error) {
